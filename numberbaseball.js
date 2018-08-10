@@ -1,59 +1,69 @@
-getRanNum = function () {
-    while (true) {
-        var number = Math.floor(Math.random() * 900) + 100
-        var str = String(number)
-        var Rnum = str.split('')
-        if (Rnum[0] != Rnum[1] && Rnum[1] != Rnum[2] && Rnum[2] != Rnum[0]) {
-            break;
+// Number baseball game
+// Mrdoo
+// 2018. 08. 10
+
+// get random number
+function getRanNum() {
+    const allNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const answer = [];
+    for (let i = 0; i < 3; i++) {
+        let ranNum = Math.floor(Math.random() * (allNumbers.length - i));
+        answer[i] = allNumbers[ranNum];
+        allNumbers.splice(ranNum, 1);
+    }
+    return answer;
+}
+
+var a = getRanNum();
+
+// get user number
+function getUserNum() {
+    const input = document.getElementById('input').value;
+    const userNumber = input.split('')
+    return userNumber;
+}
+
+// print progress
+function isNum(strikeNum, ballNum, progress) {
+    if (strikeNum === 3) {
+        progress.innerHTML = '당신이 이겻습니다. 게임종료! 다시하려면 숫자를 다시 받아 주세요'
+    } else if (strikeNum > 0 || ballNum > 0) {
+        progress.innerHTML = strikeNum + '스트라이크 <br> ' + ballNum + '볼'
+    } else {
+        progress.innerHTML = '포볼'
+    }
+}
+
+// cheking strike
+function isStrike(ranNum, userNum) {
+    var strikeNum = 0;
+    for (var i = 0; i < userNum.length; i++) {
+        if (userNum[i] === ranNum[i]) {
+            strikeNum++
         }
     }
-    return Rnum;
+    return strikeNum;
 }
 
-getMyNum = function () {
-    var Mnum = document.getElementById('input').value.split('')
-    return Mnum;
-}
-
-isNum = function () {
-    var Rnum = ran
-    var Mnum = getMyNum();
-    var strike = isStrike(Rnum, Mnum);
-    var ball = isBall(Rnum, Mnum);
-    var out = document.getElementById('output');
-    if (strike === 3) return out.innerHTML = '3개의 숫자를 모두 맞추셧습니다! 게임종료!';
-    return out.innerHTML = 'strike : ' + strike + '<br>ball : ' + ball;
-}
-
-isStrike = function () {
-    var Rnum = ran
-    var Mnum = getMyNum();
-    var strike = 0;
-    for (var i = 0; i < Rnum.length; i++) {
-        if (Mnum[i] === Rnum[i])
-        strike++;
-    }
-    return strike;
-}
-
-isBall = function () {
-    var Rnum = ran
-    var Mnum = getMyNum();
-    var ball = 0;
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            if ((j != i) && (Mnum[i] === Rnum[j]))
-            ball++;
+// checking ball
+function isBall(ranNum, userNum) {
+    var ballNum = 0;
+    for (var i = 0; i < userNum.length; i++) {
+        if (ranNum[i] === userNum[i + 1] || ranNum[i] === userNum[i + 2] || ranNum[i] === userNum[i - 1] || ranNum[i] === userNum[i -2]) {
+            ballNum++
         }
     }
-    return ball;
+    return ballNum;
 }
 
-var ran = getRanNum();
-
-play = function () {
-    getMyNum();
-    isNum();
-    isStrike();
-    isBall();
+// play button
+function play() {
+    var progress = document.getElementById('progress');
+    var nowNum = getUserNum();
+    if (nowNum[0] === nowNum[1] || nowNum[1] === nowNum[2] || nowNum[2] === nowNum[0]) {
+        alert('같은 숫자를 입력하지 마세요!')
+    }
+    var strikeNum = isStrike(a, nowNum);
+    var ballNum = isBall(a, nowNum);
+    isNum(strikeNum, ballNum, progress);
 }
