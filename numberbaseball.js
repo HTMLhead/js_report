@@ -4,6 +4,7 @@
 
 // get random number
 function getRanNum() {
+    document.getElementById('saveAnswer');
     const allNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const answer = [];
     for (let i = 0; i < 3; i++) {
@@ -11,10 +12,10 @@ function getRanNum() {
         answer[i] = allNumbers[ranNum];
         allNumbers.splice(ranNum, 1);
     }
-    return answer;
+    saveAnswer = answer
+    return saveAnswer
 }
-
-var a = getRanNum();
+getRanNum();
 
 // get user number
 function getUserNum() {
@@ -58,6 +59,7 @@ function isBall(ranNum, userNum) {
 
 // play button
 function play() {
+    var a = saveAnswer
     var progress = document.getElementById('progress');
     var nowNum = getUserNum();
     if (nowNum[0] === nowNum[1] || nowNum[1] === nowNum[2] || nowNum[2] === nowNum[0]) {
