@@ -1,6 +1,6 @@
 // Number baseball game
 // Mrdoo
-// 2018. 08. 10
+// 2018. 08. 16
 
 // get random number
 function getRanNum() {
@@ -8,7 +8,7 @@ function getRanNum() {
     const allNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const answer = [];
     for (let i = 0; i < 3; i++) {
-        let ranNum = Math.floor(Math.random() * (allNumbers.length - i));
+        let ranNum = Math.floor(Math.random() * (allNumbers.length));
         answer[i] = allNumbers[ranNum];
         allNumbers.splice(ranNum, 1);
     }
@@ -57,15 +57,21 @@ function isBall(ranNum, userNum) {
     return ballNum;
 }
 
+function rule(nowNum) {
+    if (nowNum[0] === nowNum[1] || nowNum[1] === nowNum[2] || nowNum[2] === nowNum[0]) {
+        return alert('같은 숫자를 입력하지 마세요!');
+    } else if (nowNum.length != 3) {
+        return alert('3자리의 숫자만 입력해 주세요!');
+    } 
+}
+
 // play button
 function play() {
-    var a = saveAnswer
     var progress = document.getElementById('progress');
+    var answer = saveAnswer
     var nowNum = getUserNum();
-    if (nowNum[0] === nowNum[1] || nowNum[1] === nowNum[2] || nowNum[2] === nowNum[0]) {
-        alert('같은 숫자를 입력하지 마세요!')
-    }
-    var strikeNum = isStrike(a, nowNum);
-    var ballNum = isBall(a, nowNum);
+    rule(nowNum);
+    var strikeNum = isStrike(answer, nowNum);
+    var ballNum = isBall(answer, nowNum);
     isNum(strikeNum, ballNum, progress);
 }
