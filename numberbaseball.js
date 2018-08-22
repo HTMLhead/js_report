@@ -18,23 +18,28 @@ getRanNum();
 
 // get user number
 function getUserNum() {
+    const arr = [];
     const input = document.getElementById('input').value;
-    const userNumber = input.split('')
-    for (let i = 0; i < userNumber.length; i++) {
-        userNumber[i] = Number(userNumber[i]);
-    }
-    return userNumber;
+    const userNum = Number(input)
+    arr[0] = Math.floor(userNum / 100)
+    arr[1] = Math.floor((userNum - (arr[0] * 100)) / 10)
+    arr[2] = Math.floor(userNum - (arr[0] * 100) - (arr[1] * 10))
+    return arr;
 }
 
-// print progress
-function isNum(strikeNum, ballNum, progress) {
+// print progress //divide
+function isCorrect(strikeNum, ballNum, progress) {
     if (strikeNum === 3) {
-        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum + '<br> 승리!'
+        progress.innerHTML = '스트라이크 아웃!'
     } else if (strikeNum > 0 || ballNum > 0) {
-        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum
+        output(strikeNum, ballNum, progress)   
     } else {
-        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum + '<br> 포볼'
+        progress.innerHTML = '포볼'
     }
+}
+
+function output(strikeNum, ballNum, progress) {
+    return progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum
 }
 
 // cheking strike
@@ -75,5 +80,5 @@ function play() {
     rule(nowNum);
     var strikeNum = isStrike(answer, nowNum);
     var ballNum = isBall(answer, nowNum);
-    isNum(strikeNum, ballNum, progress);
+    isCorrect(strikeNum, ballNum, progress);
 }
