@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>baseball game</title>
+    <style>
+    h{
+        margin: 4px;
+    }
+    button{
+        margin: 4px;
+    }
+    </style>
 </head>
 <body>
     <h2>숫자 야구게임</h2>
-    <h>랜덤한 숫자를 받고싶다면 -></h>
+    <h>숫자 다시받기</h>
     <button onclick = 'getRanNum()'>숫자받기</button>
     <br>
-    <div id = 'saveAnswer'></div>
     <div id = 'setting'>
         <input type = 'text' id = 'input'>
         <button onclick = 'play()'>던지기</button>
     </div>
-    <h id = 'progress'></h>
+    <div id = 'progress'>스트라이크 : <br> 볼 :</div>
     <script src = 'numberbaseball.js'>
     </script>
 </body>

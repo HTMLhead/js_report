@@ -1,14 +1,13 @@
 // Number baseball game
 // Mrdoo
-// 2018. 08. 16
+// 2018. 08. 22
 
 // get random number
 function getRanNum() {
-    document.getElementById('saveAnswer');
-    const allNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const allNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const answer = [];
     for (let i = 0; i < 3; i++) {
-        let ranNum = Math.floor(Math.random() * (allNumbers.length));
+        let ranNum = Math.floor(Math.random() * allNumbers.length);
         answer[i] = allNumbers[ranNum];
         allNumbers.splice(ranNum, 1);
     }
@@ -21,17 +20,20 @@ getRanNum();
 function getUserNum() {
     const input = document.getElementById('input').value;
     const userNumber = input.split('')
+    for (let i = 0; i < userNumber.length; i++) {
+        userNumber[i] = Number(userNumber[i]);
+    }
     return userNumber;
 }
 
 // print progress
 function isNum(strikeNum, ballNum, progress) {
     if (strikeNum === 3) {
-        progress.innerHTML = '당신이 이겻습니다. 게임종료! 다시하려면 숫자를 다시 받아 주세요'
+        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum + '<br> 승리!'
     } else if (strikeNum > 0 || ballNum > 0) {
-        progress.innerHTML = strikeNum + '스트라이크 <br> ' + ballNum + '볼'
+        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum
     } else {
-        progress.innerHTML = '포볼'
+        progress.innerHTML = '스트라이크 : ' + strikeNum + '<br> 볼 : ' + ballNum + '<br> 포볼'
     }
 }
 
