@@ -48,11 +48,11 @@ class NumberBaseballGame {
 
   isCorrect(strikeNum, ballNum) {
     if (strikeNum === 3) {
-      this.progress.innerHTML = "홈러어어어언 승리!";
+      this.progress.innerHTML = "홈런,승리!";
     } else if (strikeNum > 0 || ballNum > 0) {
       this.progress.innerHTML = `${strikeNum}<br>${ballNum}`;
     } else {
-      this.progress.innerHTML = "그리고 아무것도 없었다.";
+      this.progress.innerHTML = "낫씽";
     }
   }
 
@@ -79,4 +79,69 @@ class NumberBaseballGame {
   }
 }
 
+class BaseballAnimation {
+  constructor() {}
+  playSwing() {
+    const one = document.querySelector('.one')
+    const two = document.querySelector('.two')
+    const three = document.querySelector('.three')
+    const four = document.querySelector('.four')
+    const five = document.querySelector('.five')
+    const six = document.querySelector('.six')
+    const seven = document.querySelector('.seven')
+    const eight = document.querySelector('.eight')
+    const nine = document.querySelector('.nine')
+    const ten = document.querySelector('.ten')
+    const eleven = document.querySelector('.eleven')
+    const twelve = document.querySelector('.twelve')
+    one.classList.add('show')
+    setTimeout(_ => {
+      twelve.classList.remove('show')
+      one.classList.remove('show')
+      two.classList.add('show')
+    }, 100)
+    setTimeout(_ => {
+      two.classList.remove('show')
+      three.classList.add('show')
+    }, 200)
+    setTimeout(_ => {
+      three.classList.remove('show')
+      four.classList.add('show')
+    }, 300)
+    setTimeout(_ => {
+      four.classList.remove('show')
+      five.classList.add('show')
+    }, 400)
+    setTimeout(_ => {
+      five.classList.remove('show')
+      six.classList.add('show')
+    }, 500)
+    setTimeout(_ => {
+      six.classList.remove('show')
+      seven.classList.add('show')
+    }, 600)
+    setTimeout(_ => {
+      seven.classList.remove('show')
+      eight.classList.add('show')
+    }, 700)
+    setTimeout(_ => {
+      eight.classList.remove('show')
+      nine.classList.add('show')
+    }, 800)
+    setTimeout(_ => {
+      nine.classList.remove('show')
+      ten.classList.add('show')
+    }, 900)
+    setTimeout(_ => {
+      ten.classList.remove('show')
+      eleven.classList.add('show')
+    }, 1000)
+    setTimeout(_ => {
+      eleven.classList.remove('show')
+      twelve.classList.add('show')
+    }, 1100)
+    
+  }
+}
 const baseballGame = new NumberBaseballGame();
+const baseballAnimation = new BaseballAnimation

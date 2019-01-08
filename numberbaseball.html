@@ -8,13 +8,28 @@
   <body>
     <h2>숫자 야구게임</h2>
     <hr />
-    <div class="playingGame">
-      <input type="text" id="input" />
-      <button onclick="baseballGame.play()">던지기</button>
+    <div class="playing-game">
+			<div class='input-game'>
+				<input type="text" id="input" />
+				<button class='button' onclick="baseballGame.play(); baseballAnimation.playSwing();">던지기</button>
+			</div>
 			<div class='progress'>스트라이크 : <br>볼 :</div>
 			<div class='progress' id='progress'><br></div>
     </div>
-    <div class="gameAni"></div>
+    <div id = 'animation' class="game-ani">
+			<img class='one' src="./images/1.png" alt="">
+			<img class='two' src="./images/2.png" alt="">
+			<img class='three' src="./images/3.png" alt="">
+			<img class='four' src="./images/4.png" alt="">
+			<img class='five' src="./images/5.png" alt="">
+			<img class='six' src="./images/6.png" alt="">
+			<img class='seven' src="./images/7.png" alt="">
+			<img class='eight' src="./images/8.png" alt="">
+			<img class='nine' src="./images/9.png" alt="">
+			<img class='ten' src="./images/10.png" alt="">
+			<img class='eleven' src="./images/11.png" alt="">
+			<img class='twelve' src="./images/12.png" alt="">
+		</div>
     <script src="numberbaseball.js"></script>
   </body>
 </html>
