@@ -19,13 +19,13 @@ class NumberBaseballGame {
     return answer;
 	}
 	
-}
+	getUserNum() {
+		const userString = document.getElementById('input').value;
+		const userArr = userString.split('');
+		return userArr
+	}
 
-// get user number
-function getUserNum() {
-  const userString = document.getElementById("input").value;
-  const userNum = userString.split("");
-  return userNum;
+	
 }
 
 // print progress //divide
