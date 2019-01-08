@@ -35,37 +35,26 @@ class NumberBaseballGame {
 		return strikeNum;
 	}
 
-}
-// cheking strike
-function isStrike(ranNum, userNum) {
-  let strikeNum = 0;
-  for (let i = 0; i < userNum.length; i++) {
-    if (userNum[i] === ranNum[i]) {
-      strikeNum++;
-    }
-  }
-  return strikeNum;
-}
+	getBallNum(ranNum, userNum) {
+		let ballNum = 0;
+		for(let i = 0; i < userNum.length; i++) {
+			if (userNum[i] !== ranNum[i] && ranNum.includes(userNum[i])) {
+				ballNum++;
+			}
+		}
+		return ballNum;
+	}
 
-// checking ball
-function isBall(ranNum, userNum) {
-  let ballNum = 0;
-  for (let i = 0; i < userNum.length; i++) {
-    if (userNum[i] !== ranNum[i] && ranNum.includes(userNum[i])) {
-      ballNum++;
-    }
-  }
-  return ballNum;
-}
-// print progress //divide
-function isCorrect(strikeNum, ballNum, progress) {
-  if (strikeNum === 3) {
-    progress.innerHTML = "스트라이크 아웃!";
-  } else if (strikeNum > 0 || ballNum > 0) {
-    output(strikeNum, ballNum, progress);
-  } else {
-    progress.innerHTML = "포볼";
-  }
+	isCorrect(strikeNum, ballNum) {
+		if(strikeNum === 3) {
+			alert('homeRUN!')
+		} else if( strikeNum > 0 || ballNum > 0) {
+			alert(`${strikeNum} 스트라이크, ${ballNum} 볼`)
+		} else {
+			alert(`포볼`)
+		}
+	}
+	
 }
 
 function output(strikeNum, ballNum, progress) {
