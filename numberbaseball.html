@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>baseball game</title>
-    <style>
-    h{
-        margin: 4px;
-    }
-    button{
-        margin: 4px;
-    }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+		<title>baseball game</title>
+		<link rel="stylesheet" href="numberbaseball.css">
+  </head>
+  <body>
     <h2>숫자 야구게임</h2>
-    <h>숫자 다시받기</h>
-    <button onclick = 'getRanNum()'>숫자받기</button>
-    <br>
-    <div id = 'setting'>
-        <input type = 'text' id = 'input'>
-        <button onclick = 'play()'>던지기</button>
+    <hr />
+    <div class="playingGame">
+      <input type="text" id="input" />
+      <button onclick="baseballGame.play()">던지기</button>
+			<div class='progress'>스트라이크 : <br>볼 :</div>
+			<div class='progress' id='progress'><br></div>
     </div>
-    <div id = 'progress'>스트라이크 : <br> 볼 :</div>
-    <script src = 'numberbaseball.js'>
-    </script>
-</body>
+    <div class="gameAni"></div>
+    <script src="numberbaseball.js"></script>
+  </body>
 </html>

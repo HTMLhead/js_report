@@ -6,6 +6,7 @@
 class NumberBaseballGame {
   constructor() {
     this.answer = this.getRanNum();
+    this.progress = document.getElementById("progress");
   }
 
   getRanNum() {
@@ -17,61 +18,65 @@ class NumberBaseballGame {
       answer.push(oneNum[0]);
     }
     return answer;
-	}
-	
-	getUserNum() {
-		const userString = document.getElementById('input').value;
-		const userArr = userString.split('');
-		return userArr
-	}
+  }
 
-	getStrikeNum(ranNum, userNum) {
-		let strikeNum = 0;
-		for (let i = 0; i < userNum.length; i++) {
-			if(useNum[i] === ranNum[i]) {
-				strikeNum++;
-			}
-		}
-		return strikeNum;
-	}
+  getUserNum() {
+    const userString = document.getElementById("input").value;
+    const userArr = userString.split("");
+    return userArr;
+  }
 
-	getBallNum(ranNum, userNum) {
-		let ballNum = 0;
-		for(let i = 0; i < userNum.length; i++) {
-			if (userNum[i] !== ranNum[i] && ranNum.includes(userNum[i])) {
-				ballNum++;
-			}
-		}
-		return ballNum;
-	}
+  getStrikeNum(ranNum, userNum) {
+    let strikeNum = 0;
+    for (let i = 0; i < userNum.length; i++) {
+      if (userNum[i] === ranNum[i]) {
+        strikeNum++;
+      }
+    }
+    return strikeNum;
+  }
 
-	isCorrect(strikeNum, ballNum) {
-		if(strikeNum === 3) {
-			alert('homeRUN!')
-		} else if( strikeNum > 0 || ballNum > 0) {
-			alert(`${strikeNum} 스트라이크, ${ballNum} 볼`)
-		} else {
-			alert(`포볼`)
-		}
-	}
+  getBallNum(ranNum, userNum) {
+    let ballNum = 0;
+    for (let i = 0; i < userNum.length; i++) {
+      if (userNum[i] !== ranNum[i] && ranNum.includes(userNum[i])) {
+        ballNum++;
+      }
+    }
+    return ballNum;
+  }
 
-	rule(nowNum) {
-		if (
-			nowNum[0] === nowNum[1] ||
-			nowNum[1] === nowNum[2] ||
-			nowNum[2] === nowNum[0]
-		) {
-			return alert("같은 숫자를 입력하지 마세요!");
-		} else if (nowNum.length != 3) {
-			return alert("3자리의 숫자만 입력해 주세요!");
-		}
-	}
-	
-	play() {
-		let nowNum = getUserNum();
-		this.rule(nowNum)
-		let strikeNum = isStrike(this.answer, nowNum)
-		let ballNum = isBall(this.answer, nowNum)
-		this.isCorrect(strikeNum, ballNum)
-	}
+  isCorrect(strikeNum, ballNum) {
+    if (strikeNum === 3) {
+      this.progress.innerHTML = "홈러어어어언 승리!";
+    } else if (strikeNum > 0 || ballNum > 0) {
+      this.progress.innerHTML = `${strikeNum}<br>${ballNum}`;
+    } else {
+      this.progress.innerHTML = "그리고 아무것도 없었다.";
+    }
+  }
+
+  checkRuleBreak(nowNum) {
+    if (
+      nowNum[0] === nowNum[1] ||
+      nowNum[1] === nowNum[2] ||
+      nowNum[2] === nowNum[0]
+    ) {
+      alert("같은 숫자를 입력하지 마세요!");
+      return true;
+    } else if (nowNum.length != 3) {
+      alert("3자리의 숫자만 입력해 주세요!");
+      return true;
+    }
+  }
+
+  play() {
+    let nowNum = this.getUserNum();
+    if (this.checkRuleBreak(nowNum)) return;
+    let strikeNum = this.getStrikeNum(this.answer, nowNum);
+    let ballNum = this.getBallNum(this.answer, nowNum);
+    this.isCorrect(strikeNum, ballNum);
+  }
 }
+
+const baseballGame = new NumberBaseballGame();
