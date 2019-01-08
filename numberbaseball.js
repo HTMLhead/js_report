@@ -54,35 +54,24 @@ class NumberBaseballGame {
 			alert(`포볼`)
 		}
 	}
+
+	rule(nowNum) {
+		if (
+			nowNum[0] === nowNum[1] ||
+			nowNum[1] === nowNum[2] ||
+			nowNum[2] === nowNum[0]
+		) {
+			return alert("같은 숫자를 입력하지 마세요!");
+		} else if (nowNum.length != 3) {
+			return alert("3자리의 숫자만 입력해 주세요!");
+		}
+	}
 	
-}
-
-function output(strikeNum, ballNum, progress) {
-  return (progress.innerHTML =
-    "스트라이크 : " + strikeNum + "<br> 볼 : " + ballNum);
-}
-
-
-
-function rule(nowNum) {
-  if (
-    nowNum[0] === nowNum[1] ||
-    nowNum[1] === nowNum[2] ||
-    nowNum[2] === nowNum[0]
-  ) {
-    return alert("같은 숫자를 입력하지 마세요!");
-  } else if (nowNum.length != 3) {
-    return alert("3자리의 숫자만 입력해 주세요!");
-  }
-}
-
-// play button
-function play() {
-  var progress = document.getElementById("progress");
-  var answer = saveAnswer;
-  var nowNum = getUserNum();
-  rule(nowNum);
-  var strikeNum = isStrike(answer, nowNum);
-  var ballNum = isBall(answer, nowNum);
-  isCorrect(strikeNum, ballNum, progress);
+	play() {
+		let nowNum = getUserNum();
+		this.rule(nowNum)
+		let strikeNum = isStrike(this.answer, nowNum)
+		let ballNum = isBall(this.answer, nowNum)
+		this.isCorrect(strikeNum, ballNum)
+	}
 }
