@@ -1,37 +1,6 @@
-@keyframes swing {
-    0% {
-        
-    }
-    10% {
-        
-    }
-    20% {
-        
-    }
-    30% {
-        
-    }
-    40% {
-        
-    }
-    50% {
-        
-    }
-    60% {
-       
-    }
-    70% {
-       
-    }
-    80% {
-     
-    }
-    90% {
-      
-    }
-    100% {
-    
-    }
+:root {
+    --ani-position: absolute;
+    --ani-opacitiy: 0;
 }
 
 .progress {
@@ -46,61 +15,66 @@
     display: block;
 }
 
-.one {
-    position:absolute;
-    opacity: 0;
-}
-.two {
-    position:absolute;
-    opacity: 0;
-}
-.three{
-    position:absolute;
-    opacity: 0;
+.image1 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.four{
-    position:absolute;
-    opacity: 0;
+.image2 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.five{
-    position:absolute;
-    opacity: 0;
+.image3 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.six{
-    position:absolute;
-    opacity: 0;
+.image4 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.seven{
-    position:absolute;
-    opacity: 0;
+.image5 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.eight{
-    position:absolute;
-    opacity: 0;
+.image6 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.nine{
-    position:absolute;
-    opacity: 0;
+.image7 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
 
-.ten{
-    position:absolute;
-    opacity: 0;
+.image8 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
-.eleven{
-    position:absolute;
-    opacity: 0;
+
+.image9 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
-.twelve{
-    position:absolute;
-    opacity: 0;
+
+.image10 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
 }
-.show{
-    opacity:1;
+
+.image11 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
+}
+
+.image12 {
+    position: var(--ani-position);
+    opacity: var(--ani-opacitiy);
+}
+
+.show {
+    opacity: 1;
 }
