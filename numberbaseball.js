@@ -81,67 +81,24 @@ class NumberBaseballGame {
 
 class BaseballAnimation {
   constructor() {}
-  playSwing() {
+  getImgElArr() {
     const selectorArr = [];
-    for(let i = 1; i < 13; i++) {
-      selectorArr.push(document.querySelector(`.image${i}`))
+    for (let i = 1; i < 13; i++) {
+      selectorArr.push(document.querySelector(`.image${i}`));
     }
-    selectorArr[0].classList.add('show')
+    return selectorArr;
+  }
+  playSwing() {
+    const selectorArr = this.getImgElArr();
+    selectorArr[0].classList.add("show");
     selectorArr.forEach((v, i) => {
-      if(i === 0) return selectorArr[11].classList.remove('show')
+      if (i === 0) return selectorArr[11].classList.remove("show");
       setTimeout(_ => {
-        selectorArr[i-1].classList.remove('show');
-        v.classList.add('show');
-      }, i*100)
-    })
-    // one.classList.add('show')
-    // setTimeout(_ => {
-    //   twelve.classList.remove('show')
-    //   one.classList.remove('show')
-    //   two.classList.add('show')
-    // }, 100)
-    // setTimeout(_ => {
-    //   two.classList.remove('show')
-    //   three.classList.add('show')
-    // }, 200)
-    // setTimeout(_ => {
-    //   three.classList.remove('show')
-    //   four.classList.add('show')
-    // }, 300)
-    // setTimeout(_ => {
-    //   four.classList.remove('show')
-    //   five.classList.add('show')
-    // }, 400)
-    // setTimeout(_ => {
-    //   five.classList.remove('show')
-    //   six.classList.add('show')
-    // }, 500)
-    // setTimeout(_ => {
-    //   six.classList.remove('show')
-    //   seven.classList.add('show')
-    // }, 600)
-    // setTimeout(_ => {
-    //   seven.classList.remove('show')
-    //   eight.classList.add('show')
-    // }, 700)
-    // setTimeout(_ => {
-    //   eight.classList.remove('show')
-    //   nine.classList.add('show')
-    // }, 800)
-    // setTimeout(_ => {
-    //   nine.classList.remove('show')
-    //   ten.classList.add('show')
-    // }, 900)
-    // setTimeout(_ => {
-    //   ten.classList.remove('show')
-    //   eleven.classList.add('show')
-    // }, 1000)
-    // setTimeout(_ => {
-    //   eleven.classList.remove('show')
-    //   twelve.classList.add('show')
-    // }, 1100)
-    
+        selectorArr[i - 1].classList.remove("show");
+        v.classList.add("show");
+      }, i * 100);
+    });
   }
 }
 const baseballGame = new NumberBaseballGame();
-const baseballAnimation = new BaseballAnimation
+const baseballAnimation = new BaseballAnimation();
