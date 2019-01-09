@@ -86,7 +86,14 @@ class BaseballAnimation {
     for(let i = 1; i < 13; i++) {
       selectorArr.push(document.querySelector(`.image${i}`))
     }
-    console.log(selectorArr);
+    selectorArr[0].classList.add('show')
+    selectorArr.forEach((v, i) => {
+      if(i === 0) return selectorArr[11].classList.remove('show')
+      setTimeout(_ => {
+        selectorArr[i-1].classList.remove('show');
+        v.classList.add('show');
+      }, i*100)
+    })
     // one.classList.add('show')
     // setTimeout(_ => {
     //   twelve.classList.remove('show')
