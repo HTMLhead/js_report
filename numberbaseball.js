@@ -7,6 +7,7 @@ class NumberBaseballGame {
   constructor(baseballAnimation) {
     this.answer = this.getRanNum();
     this.progress = document.getElementById("progress");
+    this.victoryImg = document.querySelector('.victory-img')
     this.baseballAnimation = baseballAnimation;
   }
 
@@ -51,6 +52,7 @@ class NumberBaseballGame {
     if (strikeNum === 3) {
       this.progress.innerHTML =
         "!HomE RuN YoU WiN! <br>this page will restart in 3second";
+      this.victoryImg.classList.add('victory-animation');
       setTimeout(_ => {
         location.reload();
       }, 3500);

@@ -21,6 +21,10 @@
 .button {
     border:1px solid #0c0c0c
 }
+.button:hover{
+    color:#fff;
+    background-color:#000;
+}
 .image1 {
     position: var(--ani-position);
     opacity: var(--ani-opacitiy);
@@ -84,13 +88,27 @@
 .show {
     opacity: 1;
 }
-
+@keyframes win-animation{
+    from{
+        background-size:0px;
+        
+    }
+    to{
+        background-size:44px;
+    }
+}
 .victory-img {
     position: relative;
+    background: no-repeat;
     background-image: url('./images/victory.png');
-    background-size: 44px;
+    background-size: 0;
     width: 44px;
     height: 70px;
     left: 150px;
     top: 15px;
 }
+
+.victory-animation{
+    animation: win-animation 3.5s;
+}
+
