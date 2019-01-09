@@ -48,7 +48,8 @@ class NumberBaseballGame {
 
   isCorrect(strikeNum, ballNum) {
     if (strikeNum === 3) {
-      this.progress.innerHTML = "홈런,승리!";
+      alert("홈런 승리!");
+      location.reload();
     } else if (strikeNum > 0 || ballNum > 0) {
       this.progress.innerHTML = `${strikeNum}<br>${ballNum}`;
     } else {
@@ -81,6 +82,7 @@ class NumberBaseballGame {
 
 class BaseballAnimation {
   constructor() {}
+
   getImgElArr() {
     const selectorArr = [];
     for (let i = 1; i < 13; i++) {
@@ -88,6 +90,7 @@ class BaseballAnimation {
     }
     return selectorArr;
   }
+
   playSwing() {
     const selectorArr = this.getImgElArr();
     selectorArr[0].classList.add("show");
