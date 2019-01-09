@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
+
 :root {
+    font-family: 'ZCOOL KuaiLe', cursive;
     --ani-position: absolute;
     --ani-opacitiy: 0;
 }
@@ -15,6 +18,9 @@
     display: block;
 }
 
+.button {
+    border:1px solid #0c0c0c
+}
 .image1 {
     position: var(--ani-position);
     opacity: var(--ani-opacitiy);
@@ -77,4 +83,14 @@
 
 .show {
     opacity: 1;
+}
+
+.victory-img {
+    position: relative;
+    background-image: url('./images/victory.png');
+    background-size: 44px;
+    width: 44px;
+    height: 70px;
+    left: 150px;
+    top: 15px;
 }

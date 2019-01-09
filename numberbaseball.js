@@ -4,9 +4,10 @@
 
 // get random number
 class NumberBaseballGame {
-  constructor() {
+  constructor(baseballAnimation) {
     this.answer = this.getRanNum();
     this.progress = document.getElementById("progress");
+    this.baseballAnimation = baseballAnimation;
   }
 
   getRanNum() {
@@ -48,25 +49,28 @@ class NumberBaseballGame {
 
   isCorrect(strikeNum, ballNum) {
     if (strikeNum === 3) {
-      alert("홈런 승리!");
-      location.reload();
+      this.progress.innerHTML =
+        "!HomE RuN YoU WiN! <br>this page will restart in 3second";
+      setTimeout(_ => {
+        location.reload();
+      }, 3500);
     } else if (strikeNum > 0 || ballNum > 0) {
       this.progress.innerHTML = `${strikeNum}<br>${ballNum}`;
     } else {
-      this.progress.innerHTML = "낫씽";
+      this.progress.innerHTML = "Nothing";
     }
   }
 
   checkRuleBreak(nowNum) {
-    if (
+    if (nowNum.length !== 3) {
+      this.progress.innerHTML = `Please enter only 3 numbers`;
+      return true;
+    } else if (
       nowNum[0] === nowNum[1] ||
       nowNum[1] === nowNum[2] ||
       nowNum[2] === nowNum[0]
     ) {
-      alert("같은 숫자를 입력하지 마세요!");
-      return true;
-    } else if (nowNum.length != 3) {
-      alert("3자리의 숫자만 입력해 주세요!");
+      this.progress.innerHTML = `Do not input same numbers`;
       return true;
     }
   }
@@ -74,6 +78,7 @@ class NumberBaseballGame {
   play() {
     let nowNum = this.getUserNum();
     if (this.checkRuleBreak(nowNum)) return;
+    this.baseballAnimation.playSwing();
     let strikeNum = this.getStrikeNum(this.answer, nowNum);
     let ballNum = this.getBallNum(this.answer, nowNum);
     this.isCorrect(strikeNum, ballNum);
@@ -103,5 +108,5 @@ class BaseballAnimation {
     });
   }
 }
-const baseballGame = new NumberBaseballGame();
 const baseballAnimation = new BaseballAnimation();
+const baseballGame = new NumberBaseballGame(baseballAnimation);
